@@ -1,0 +1,15 @@
+const String icLogo = 'Build Great Apps!';
+const String icLogoTransparent = 'assets/images/logo_transparent.png';
+const String icHeadphones = 'assets/images/headphones.png';
+const String icBasketball = 'assets/images/basketball.png';
+const String icLab = 'assets/images/science.png';
+const String icKoala = 'assets/images/animal.png';
+const String icBulb = 'assets/images/bulb.png';
+const String icZeus = 'assets/images/zeus.png';
+const String icPolitician = 'assets/images/politics.png';
+const String icGeography = 'assets/images/globe.png';
+const String icHistory = 'assets/images/history.png';
+const String icDice = 'assets/images/dices.png';
+const String icCorrect = 'assets/icons/correct_square.svg';
+const String icWrong = 'assets/icons/wrong_square.svg';
+const String icSquareRound = 'assets/icons/square_rounded.svg';
