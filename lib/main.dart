@@ -1,3 +1,4 @@
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:quizwiz/app/app.bottomsheets.dart';
@@ -18,9 +19,9 @@ Future<void> main() async {
   await dotenv.load(fileName: ".env");
 
   BuildEnvironment.init(
-    flavor: BuildFlavor.development,
-    appName: 'Bored X',
-    quizUrl: dotenv.env['TRIVIA_API'],
+    flavor: BuildFlavor.production,
+    appName: 'QUIZWIZ',
+    quizUrl: dotenv.env['QUIZ_API'],
   );
   assert(env != null);
 
@@ -36,14 +37,21 @@ class MainApp extends StatelessWidget {
       defaultThemeMode: ThemeMode.system,
       darkTheme: ThemeData(colorScheme: darkColorScheme),
       lightTheme: ThemeData(colorScheme: lightColorScheme),
-      builder: (context, regularTheme, darkTheme, themeMode) => MaterialApp(
-        initialRoute: Routes.startupView,
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: StackedRouter().onGenerateRoute,
-        navigatorKey: StackedService.navigatorKey,
-        navigatorObservers: [
-          StackedService.routeObserver,
-        ],
+      builder: (context, regularTheme, darkTheme, themeMode) =>
+          ConnectivityAppWrapper(
+        app: MaterialApp(
+          theme: regularTheme,
+          darkTheme: darkTheme,
+          themeMode: themeMode,
+          initialRoute: Routes.startupView,
+          debugShowCheckedModeBanner: false,
+          title: env!.appName,
+          onGenerateRoute: StackedRouter().onGenerateRoute,
+          navigatorKey: StackedService.navigatorKey,
+          navigatorObservers: [
+            StackedService.routeObserver,
+          ],
+        ),
       ),
     );
   }

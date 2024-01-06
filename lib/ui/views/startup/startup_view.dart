@@ -1,6 +1,6 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:quizwiz/ui/common/app_colors.dart';
 import 'package:quizwiz/ui/common/app_images.dart';
 import 'package:quizwiz/ui/common/box_text.dart';
 import 'package:stacked/stacked.dart';
@@ -17,7 +17,10 @@ class StartupView extends StackedView<StartupViewModel> {
     StartupViewModel viewModel,
     Widget? child,
   ) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
+      backgroundColor: colorScheme.background,
       body: Stack(
         alignment: Alignment.center,
         fit: StackFit.expand,
@@ -27,36 +30,34 @@ class StartupView extends StackedView<StartupViewModel> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                icLogoTransparent,
-                height: 100,
+              FadeInLeft(
+                duration: const Duration(seconds: 1),
+                child: Image.asset(
+                  icLogoTransparent,
+                  color: colorScheme.primary,
+                  height: 100,
+                ),
               ),
               verticalSpaceMedium,
-              Hero(
-                  tag: "logo-text",
-                  child: RubikMazeText.regular("QUIZWIZ", 44, kcPrimaryColor)),
+              RubikMazeText.regular("QUIZWIZ", 44, colorScheme.primary),
             ],
           ),
           Positioned(
             bottom: 15,
             child: DefaultTextStyle(
               style: rubikMazeRegular.copyWith(
-                fontSize: 16,
-              ),
+                  fontSize: 16, color: colorScheme.primary),
               child: AnimatedTextKit(
                   totalRepeatCount: 1,
                   animatedTexts: [
-                    TypewriterAnimatedText("UNLOCK YOUR KNOWLEDGE",
+                    TypewriterAnimatedText("Your Ultimate Quiz Companion",
                         speed: const Duration(milliseconds: 100))
                   ],
                   onFinished: () {
-                    // SchedulerBinding.instance.addPostFrameCallback(
-                    //     (timeStamp) => );
-
                     viewModel.runStartupLogic();
                   }),
             ),
-          )
+          ),
         ],
       ),
     );

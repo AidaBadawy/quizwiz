@@ -13,3 +13,4 @@ const String icDice = 'assets/images/dices.png';
 const String icCorrect = 'assets/icons/correct_square.svg';
 const String icWrong = 'assets/icons/wrong_square.svg';
 const String icSquareRound = 'assets/icons/square_rounded.svg';
+const String icCountJson = 'assets/json/count.json';

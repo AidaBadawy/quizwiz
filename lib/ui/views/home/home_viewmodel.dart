@@ -1,5 +1,5 @@
+import 'package:quizwiz/app/app.router.dart';
 import 'package:quizwiz/app/app_export.dart';
-import 'package:quizwiz/ui/views/home/quiz_view.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
@@ -19,8 +19,15 @@ class HomeViewModel extends BaseViewModel {
   ];
 
   void navigateToTakeQuiz(String title) {
-    _navigationService.navigateToView(QuizView(
-      title: title,
-    ));
+    _navigationService.navigateTo(
+      Routes.quizView,
+      arguments: QuizViewArguments(title: title),
+      transition: TransitionsBuilders.slideLeftWithFade,
+    );
+  }
+
+  toggleDarkLightMode(context) {
+    getThemeManager(context).toggleDarkLightTheme();
+    notifyListeners();
   }
 }

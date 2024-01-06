@@ -62,9 +62,15 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i4.QuizView: (data) {
-      return _i5.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i4.QuizView(),
+      final args = data.getArgs<QuizViewArguments>(nullOk: false);
+      return _i5.PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            _i4.QuizView(key: args.key, title: args.title),
         settings: data,
+        transitionsBuilder: data.transition ??
+            (context, animation, secondaryAnimation, child) {
+              return child;
+            },
       );
     },
   };
@@ -74,6 +80,33 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class QuizViewArguments {
+  const QuizViewArguments({
+    this.key,
+    required this.title,
+  });
+
+  final _i5.Key? key;
+
+  final String title;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "title": "$title"}';
+  }
+
+  @override
+  bool operator ==(covariant QuizViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.title == title;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ title.hashCode;
+  }
 }
 
 extension NavigatorStateExtension on _i6.NavigationService {
@@ -105,14 +138,17 @@ extension NavigatorStateExtension on _i6.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToQuizView([
+  Future<dynamic> navigateToQuizView({
+    _i5.Key? key,
+    required String title,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.quizView,
+        arguments: QuizViewArguments(key: key, title: title),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -147,14 +183,17 @@ extension NavigatorStateExtension on _i6.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithQuizView([
+  Future<dynamic> replaceWithQuizView({
+    _i5.Key? key,
+    required String title,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.quizView,
+        arguments: QuizViewArguments(key: key, title: title),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

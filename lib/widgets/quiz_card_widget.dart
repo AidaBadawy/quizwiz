@@ -7,6 +7,8 @@ class QuizCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return LayoutBuilder(builder: (context, constraints) {
       return Stack(
         clipBehavior: Clip.none,
@@ -18,13 +20,15 @@ class QuizCardWidget extends StatelessWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
               elevation: 4,
-              color: Theme.of(context).colorScheme.primaryContainer,
+              shadowColor: colorScheme.primary.withOpacity(.7),
+              color: colorScheme.primaryContainer,
               child: Container(
                 padding: const EdgeInsets.only(bottom: 5),
                 alignment: Alignment.bottomCenter,
                 height: constraints.maxHeight - 30,
                 width: constraints.maxWidth,
-                child: ManropeText.medium(topic.title, 16, kcDarkGreyColor),
+                child: ManropeText.medium(
+                    topic.title, 16, colorScheme.onSecondaryContainer),
               ),
             ),
           ),
