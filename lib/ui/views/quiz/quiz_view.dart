@@ -216,7 +216,7 @@ class QuizView extends StackedView<QuizViewModel> {
                                       ? "Finish"
                                       : "Next",
                                   btnColor: colorScheme.primary,
-                                  textColor: kcWhite,
+                                  textColor: colorScheme.onPrimary,
                                   radius: 8,
                                   height: 60,
                                   fontSize: 16,

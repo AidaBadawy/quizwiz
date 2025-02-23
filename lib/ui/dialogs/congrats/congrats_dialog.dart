@@ -109,10 +109,10 @@ class CongratsDialog extends StackedView<CongratsDialogModel> {
                   color: colorScheme.primary,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Text(
+                child: Text(
                   'Play Again',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),

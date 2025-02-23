@@ -41,15 +41,6 @@ class QuizService with ListenableServiceMixin {
         return true;
       }
     } on DioException {
-      // Fluttertoast.showToast(
-      //     msg: exception.message.toString(),
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.BOTTOM,
-      //     timeInSecForIosWeb: 1,
-      //     backgroundColor: Colors.red,
-      //     textColor: Colors.white,
-      //     fontSize: 16.0);
-
       rethrow;
     }
 
