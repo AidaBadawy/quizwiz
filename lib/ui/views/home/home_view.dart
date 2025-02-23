@@ -19,9 +19,9 @@ class HomeView extends StackedView<HomeViewModel> {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         elevation: 0,
         centerTitle: true,
         title: RubikMazeText.regular("QUIZWIZ", 24, colorScheme.primary),

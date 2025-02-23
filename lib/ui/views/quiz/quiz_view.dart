@@ -25,10 +25,10 @@ class QuizView extends StackedView<QuizViewModel> {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         iconTheme: IconThemeData(color: colorScheme.primary),
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         elevation: 0,
         centerTitle: true,
         title: RubikMazeText.regular(title, 20, colorScheme.primary),

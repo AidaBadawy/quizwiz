@@ -20,7 +20,7 @@ class StartupView extends StackedView<StartupViewModel> {
     ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
-      backgroundColor: colorScheme.background,
+      backgroundColor: colorScheme.surface,
       body: Stack(
         alignment: Alignment.center,
         fit: StackFit.expand,
